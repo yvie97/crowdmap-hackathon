@@ -151,6 +151,20 @@ function OccupancyChart({ historyData }) {
   );
 }
 
+/* ── Crowding Alert Banner ───────────────────── */
+function CrowdingAlert({ areaData }) {
+  const crowded = AREAS.filter(a => (areaData[a.id] || {}).level === 'high');
+  if (crowded.length === 0) return null;
+  return (
+    <div className="crowding-alert">
+      <span className="crowding-alert-icon">⚠</span>
+      <span className="crowding-alert-text">
+        <strong>High occupancy:</strong> {crowded.map(a => a.shortName).join(', ')}
+      </span>
+    </div>
+  );
+}
+
 /* ── Find Seat Banner ────────────────────────── */
 function FindSeatBanner({ recommendations }) {
   if (!recommendations || recommendations.length === 0) return null;
@@ -581,6 +595,7 @@ function App() {
 
       <div className="content-wrapper">
         <FindSeatBanner recommendations={recommendations} />
+        <CrowdingAlert areaData={areaData} />
 
         <div className="dashboard-layout">
           <LeftPanel areaData={areaData} />
@@ -634,7 +649,7 @@ function App() {
                     <Polygon
                       key={area.id}
                       positions={area.polygon}
-                      pathOptions={{ color, fillColor: color, fillOpacity: 0.55, weight: 2 }}
+                      pathOptions={{ color, fillColor: color, fillOpacity: 0.55, weight: level === 'high' ? 3 : 2, className: level === 'high' ? 'zone-high-pulse' : '' }}
                       eventHandlers={{
                         mouseover: e => e.target.setStyle({ fillOpacity: 0.72 }),
                         mouseout:  e => e.target.setStyle({ fillOpacity: 0.55 }),

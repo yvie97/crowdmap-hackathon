@@ -386,6 +386,15 @@ body {
 .popup-label { display: inline-block; color: white; padding: 3px 13px; border-radius: 20px; font-size: 0.84rem; font-weight: 700; margin-bottom: 5px; }
 .popup-time  { font-size: 0.78rem; color: #7a5e3e; }
 
+/* ── Crowding alert ──────────────────────────── */
+.crowding-alert { display: flex; align-items: center; gap: 8px; padding: 7px 14px; background: rgba(205,140,118,0.18); border-left: 3px solid rgb(205,140,118); border-radius: 4px; margin-bottom: 6px; }
+.crowding-alert-icon { font-size: 0.95rem; }
+.crowding-alert-text { font-size: 0.82rem; color: #4a3a28; }
+
+/* ── High zone pulse ─────────────────────────── */
+@keyframes zone-pulse { 0%, 100% { stroke-opacity: 1; } 50% { stroke-opacity: 0.3; } }
+.zone-high-pulse { animation: zone-pulse 1.5s ease-in-out infinite; }
+
 /* ── Privacy card ────────────────────────────── */
 .privacy-card { border-left: 3px solid rgb(120,168,135); }
 .privacy-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }

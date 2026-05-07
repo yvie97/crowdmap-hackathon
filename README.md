@@ -71,7 +71,7 @@ flowchart TD
 | Computer Vision | Python, OpenCV, YOLOv8 (Ultralytics) |
 | Backend | FastAPI, WebSocket, Redis, SQLite |
 | Frontend | React, Leaflet (react-leaflet) |
-| Infra | Docker, nginx, Let's Encrypt, GitHub Actions CI |
+| Infra | Docker, nginx, Let's Encrypt, GitHub Actions CI/CD |
 | Deployment | Vercel (frontend), AWS Lightsail (backend) |
 
 ---
@@ -158,12 +158,13 @@ crowdmap/
 
 ---
 
-## CI
+## CI/CD
 
 GitHub Actions runs on every push and pull request to `main`:
 
-- **Backend tests** — pytest (11 tests, no external services required)
+- **Backend tests** — pytest (12 tests, no external services required)
 - **Frontend build** — `npm run build`
+- **Deploy** — on push to `main`, automatically SSHes into AWS Lightsail and runs `docker compose up --build -d`
 
 ---
 
@@ -171,6 +172,4 @@ GitHub Actions runs on every push and pull request to `main`:
 
 - PostgreSQL / RDS for persistent historical data
 - Multi-floor support
-- Alert system for overcrowding
 - People flow direction detection
-- CD pipeline (auto-deploy backend on push)
