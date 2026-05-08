@@ -17,7 +17,7 @@ const MAP_BG = 'rgb(247, 244, 240)';
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
 const WS_BASE = API_BASE.replace(/^http/, 'ws');
 const FETCH_HEADERS = { 'ngrok-skip-browser-warning': '1' };
-const GITHUB_URL = 'https://github.com/yvie97/crowdmap-extension';
+const GITHUB_URL = 'https://github.com/jyxu97/crowdmap-hackathon';
 
 
 const AREAS = [
